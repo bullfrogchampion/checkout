@@ -1,0 +1,5 @@
+app/code/community/Bullfrogchampion/Checkout app/code/community/Bullfrogchampion/Checkout
+app/etc/modules/Bullfrogchampion_Checkout.xml app/etc/modules/Bullfrogchampion_Checkout.xml
+app/design/frontend/base/default/layout/bullfrogchampion/checkout.xml app/design/frontend/base/default/layout/bullfrogchampion/checkout.xml
+app/design/frontend/base/default/template/bullfrogchampion/checkout app/design/frontend/base/default/template/bullfrogchampion/checkout
+skin/frontend/base/default/bullfrogchampion/checkout skin/frontend/base/default/bullfrogchampion/checkout

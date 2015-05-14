@@ -1,0 +1,15 @@
+{
+    "name": "bullfrogchampion/checkout",
+    "license": "OSL-3.0",
+    "type": "magento-module",
+    "description": "Magento base onepage checkout extension.",
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    },
+    "authors":[
+        {
+            "name":"Jeremy Champion",
+            "email":"bullfrogchampion@gmail.com"
+        }
+    ]
+}

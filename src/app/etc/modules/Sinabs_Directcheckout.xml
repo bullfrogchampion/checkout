@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<config>
+	<modules>
+		<Sinabs_Directcheckout>
+			<active>true</active>
+			<codePool>community</codePool>
+		</Sinabs_Directcheckout>
+	</modules>
+</config>
