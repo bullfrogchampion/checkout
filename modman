@@ -1,5 +1,6 @@
-app/code/community/Bullfrogchampion/Checkout app/code/community/Bullfrogchampion/Checkout
-app/etc/modules/Bullfrogchampion_Checkout.xml app/etc/modules/Bullfrogchampion_Checkout.xml
-app/design/frontend/base/default/layout/bullfrogchampion/checkout.xml app/design/frontend/base/default/layout/bullfrogchampion/checkout.xml
-app/design/frontend/base/default/template/bullfrogchampion/checkout app/design/frontend/base/default/template/bullfrogchampion/checkout
-skin/frontend/base/default/bullfrogchampion/checkout skin/frontend/base/default/bullfrogchampion/checkout
+src/app/code/community/Bullfrogchampion/Checkout app/code/community/Bullfrogchampion/Checkout
+src/app/etc/modules/Bullfrogchampion_Checkout.xml app/etc/modules/Bullfrogchampion_Checkout.xml
+src/app/design/frontend/base/default/layout/bullfrogchampion/checkout.xml app/design/frontend/base/default/layout/bullfrogchampion/checkout.xml
+src/app/design/frontend/base/default/template/bullfrogchampion/checkout app/design/frontend/base/default/template/bullfrogchampion/checkout
+src/skin/frontend/base/default/bullfrogchampion/checkout skin/frontend/base/default/bullfrogchampion/checkout
+src/js/bullfrogchampion/checkout js/bullfrogchampion/checkout
