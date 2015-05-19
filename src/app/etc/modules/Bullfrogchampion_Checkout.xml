@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<config>
+	<modules>
+		<Bullfrogchampion_Checkout>
+			<active>true</active>
+			<codePool>community</codePool>
+		</Bullfrogchampion_Checkout>
+	</modules>
+</config>

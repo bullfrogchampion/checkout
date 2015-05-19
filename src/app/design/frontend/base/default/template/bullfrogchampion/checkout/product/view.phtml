@@ -1,0 +1,54 @@
+<?php 
+	$_product = $this->getProduct(); 
+	$_galleryImages = $_product->getMediaGalleryImages();
+	$_helper = $this->helper('catalog/output');	
+?>
+<div id="bfc-checkout-product-view-wrapper">
+	<div class="bfc-checkout-product-title">
+		<h2><?php echo $_product->getName(); ?></h2>
+	</div>
+	<div class="bfc-checkout-product-medias">
+	<?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
+	<?php
+    	$_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(200) . '" alt="' . $this->htmlEscape($this->getImageLabel()) . '" title="' . $this->htmlEscape($this->getImageLabel()) . '" />';
+   	 	echo $_helper->productAttribute($_product, $_img, 'image');
+	?>
+	<?php endif; ?>
+	<?php if (count($_galleryImages) > 0): ?>
+		<div class="more-views">
+		    <h2><?php echo $this->__('More Views') ?></h2>
+		    <ul>
+		    <?php foreach ($_galleryImages as $_image): ?>
+		        <li>
+		            <a href="javascript:;" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>">
+		            	<img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(56); ?>" width="56" height="56" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" data-src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(200); ?>"/>
+		            </a>
+		        </li>
+		    <?php endforeach; ?>
+		    </ul>
+		    <script type="text/javascript">
+		    	updateProductImage();
+		    </script>
+		</div>
+	<?php endif; ?>
+	</div>
+	<div class="bfc-checkout-product-description">
+		<?php if ($_product->getShortDescription()) : ?>
+		<div class="bfc-checkout-product-short">
+			<h2><?php echo $this->__('Quick Overview') ; ?></h2>
+			<p>
+				<?php echo $_product->getShortDescription(); ?>
+			</p>
+		</div>
+		<?php endif; ?>
+		<?php if ($_product->getDescription()) : ?>
+		<div class="bfc-checkout-product-long">
+			<h2><?php echo $this->__('Details'); ?></h2>
+			<p>
+				<?php echo $_product->getDescription(); ?>
+			</p>
+		</div>
+		<?php endif; ?>
+	</div>
+	<div class="spacer"></div>
+</div>

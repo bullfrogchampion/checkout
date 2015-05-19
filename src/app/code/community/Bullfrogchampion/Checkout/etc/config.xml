@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category    Bullfrogchampion
+ * @package     Bullfrogchampion_Checkout
+ * @copyright   Copyright (c) 2015 Jeremy Champion (www.jeremychampion.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ 
+ -->
+<config>
+	<modules>
+		<Bullfrogchampion_Checkout>
+			<version>0.0.1</version>
+		</Bullfrogchampion_Checkout>
+	</modules>
+	<global>
+		<blocks>
+			<bfc_checkout>
+				<class>Bullfrogchampion_Checkout_Block</class>
+			</bfc_checkout>
+			<checkout>
+				<rewrite>
+					<onepage_link>Bullfrogchampion_Checkout_Block_Checkout_Onepage_Link</onepage_link>
+					<links>Bullfrogchampion_Checkout_Block_Checkout_Links</links>
+				</rewrite>
+			</checkout>
+		</blocks>
+		<helpers>
+			<bfc_checkout>
+				<class>Bullfrogchampion_Checkout_Helper</class>
+			</bfc_checkout>
+			<checkout>
+				<rewrite>
+					<url>Bullfrogchampion_Checkout_Helper_Url</url>
+				</rewrite>
+			</checkout>
+			<customer>
+				<rewrite>
+					<address>Bullfrogchampion_Checkout_Helper_Address</address>
+				</rewrite>
+			</customer>
+		</helpers>
+	</global>
+	<frontend>
+		<routers>
+			<bfc_checkout>
+				<use>standard</use>
+				<args>
+					<module>Bullfrogchampion_Checkout</module>
+					<frontName>directcheckout</frontName>
+				</args>
+			</bfc_checkout>
+		</routers>
+		<layout>
+			<updates>
+				<bfc_checkout>
+					<file>bullfrogchampion/checkout.xml</file>
+				</bfc_checkout>
+			</updates>
+		</layout>
+		<translate>
+			<modules>
+				<Bullfrogchampion_Checkout>
+					<files>
+						<default>Bullfrogchampion_Checkout.csv</default>
+					</files>
+				</Bullfrogchampion_Checkout>
+			</modules>
+		</translate>
+	</frontend>
+	<adminhtml>
+		<translate>
+            <modules>
+                <Bullfrogchampion_Checkout>
+                    <files>
+                        <default>Bullfrogchampion_Checkout.csv</default>
+                    </files>
+                </Bullfrogchampion_Checkout>
+            </modules>
+        </translate>
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<bfc_checkout translate="title" module="bfc_checkout">
+											<title>Section Bullfrogchampion Checkout</title>
+										</bfc_checkout>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<bfc_checkout>
+					<file>bullfrogchampion/checkout.xml</file>
+				</bfc_checkout>
+			</updates>
+		</layout>
+	</adminhtml>
+	<default>
+		<bfc_checkout>
+			<general>
+				<page_title>Checkout</page_title>
+			</general>
+			<options>
+				<update_postcode>1</update_postcode>
+				<icons_color>F18200</icons_color>
+			</options>
+			<google>
+				<displayform>1</displayform>
+				<placeholder>14 avenue de Copenhague, 17000 La Rochelle, France</placeholder>
+			</google>
+		</bfc_checkout>
+	</default>
+</config>
