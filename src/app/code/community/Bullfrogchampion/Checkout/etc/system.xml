@@ -24,9 +24,9 @@
 	<sections>
 		<bfc_checkout translate="label" module="bfc_checkout">
 			<label>Bullfrogchampion Checkout</label>
-			<tab>checkout</tab>
+			<tab>sales</tab>
 			<frontend_type>text</frontend_type>
-			<sort_order>0</sort_order>
+			<sort_order>1000</sort_order>
 			<show_in_default>1</show_in_default>
 			<show_in_website>1</show_in_website>
 			<show_in_store>1</show_in_store>
