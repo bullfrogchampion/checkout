@@ -64,6 +64,9 @@
 				</args>
 			</bfc_checkout>
 		</routers>
+        <secure_url>
+            <bfc_checkout>/directcheckout</bfc_checkout>
+        </secure_url>
 		<layout>
 			<updates>
 				<bfc_checkout>

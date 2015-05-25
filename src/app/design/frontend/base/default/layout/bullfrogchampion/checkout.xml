@@ -37,7 +37,7 @@
 			<action method="addItem"><type>skin_css</type><stylesheet>bullfrogchampion/checkout/css/styles.css</stylesheet></action>
 			<action method="addItem"><type>skin_css</type><stylesheet>bullfrogchampion/checkout/css/modal.css</stylesheet></action>
 			<block type="core/text" name="googleplaces.js" ifconfig="checkout/google/enabled">
-				<action method="setText"><text><![CDATA[<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>]]></text></action>
+				<action method="setText"><text><![CDATA[<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>]]></text></action>
 			</block>
 			<action method="addItem"><type>js</type><name>bullfrogchampion/checkout/modal.js</name></action>
 			<action method="addItem"><type>js</type><name>bullfrogchampion/checkout/checkout.js</name></action>
