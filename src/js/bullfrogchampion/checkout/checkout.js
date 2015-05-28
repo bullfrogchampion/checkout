@@ -697,3 +697,32 @@ function normalizeString(s) {
 		return '';
 	}
 }
+
+// add giftcard
+function addGiftcard(action) {
+    var container = $('bfc-checkout-giftcard');
+    if (container != null) {
+        var code = $('giftcard_code').value;
+        if (code != '') {
+            new Ajax.Request(urlGiftcardAdd, {
+                parameters: {
+                    giftcard_code: code
+                },
+                onLoading: function() {
+                    $('giftcard-add').setStyle({ display: 'none' });
+                    $('giftcard-loading').setStyle({ display: 'block' });
+                },
+                onSuccess: function(t) {
+                    var response = t.responseText.evalJSON();
+                    if (response.success == true) {
+                        updateSpo('shipping');
+                    } else {
+                        $('giftcard-loading').setStyle({ display: 'none' });
+                        $('giftcard-add').setStyle({ display: 'block' });
+                        Modalbox.show('<p>' + response.message + '</p>', {title:(response.title && typeof(response.title) == 'string') ? response.title : 'Error'});
+                    }
+                }
+            });
+        }
+    }
+}

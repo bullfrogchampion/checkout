@@ -23,6 +23,8 @@
  * @package     Bullfrogchampion_Checkout
  * @copyright   Copyright (c) 2015 Jeremy Champion (http://www.jeremychampion.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      Sinabs <http://www.sinabs.fr>
+ * @author      Jeremy Champion <bullfrogchampion@gmail.com>
  */
 
 -->
@@ -46,7 +48,9 @@
 			<block type="checkout/onepage" name="bfc_checkout.checkout" template="bullfrogchampion/checkout/checkout.phtml">
 				<block type="bfc_checkout/checkout_billing" name="bfc_checkout.checkout.billing" as="billing" template="bullfrogchampion/checkout/checkout/billing.phtml" />
 				<block type="bfc_checkout/checkout_shipping" name="bfc_checkout.checkout.shipping" as="shipping" template="bullfrogchampion/checkout/checkout/shipping.phtml" />
-				<block type="checkout/onepage_payment_methods" name="payment_methods" as="payment_methods" template="bullfrogchampion/checkout/checkout/payment/methods.phtml" />
+				<block type="checkout/onepage_payment_methods" name="payment_methods" as="payment_methods" template="bullfrogchampion/checkout/checkout/payment/methods.phtml">
+                    <block type="bfc_checkout/checkout_enterprise_giftcard" name="bfc_checkout.giftcard" as="giftcard" template="bullfrogchampion/checkout/checkout/enterprise/giftcard.phtml" />
+                </block>
 				<block type="checkout/onepage_shipping_method_available" name="shipping_methods" as="shipping.methods" template="bullfrogchampion/checkout/checkout/shipping_method.phtml" />
 				<block type="checkout/cart_totals" name="order.summary" as="summary" template="bullfrogchampion/checkout/checkout/summary.phtml" />
 				<block type="core/template" name="additional" as="additional" template="bullfrogchampion/checkout/checkout/additional.phtml">
@@ -60,7 +64,9 @@
 	</bfc_checkout_index_index>
 	<bfc_checkout_ajax_update_spo>
 		<block type="checkout/onepage_payment_methods" output="toHtml" name="update_spo" template="bullfrogchampion/checkout/checkout/spo.phtml">
-			<block type="checkout/onepage_payment_methods" name="payment_methods" template="bullfrogchampion/checkout/checkout/payment/methods.phtml" />
+			<block type="checkout/onepage_payment_methods" name="payment_methods" template="bullfrogchampion/checkout/checkout/payment/methods.phtml">
+                <block type="bfc_checkout/checkout_enterprise_giftcard" name="bfc_checkout.giftcard" as="giftcard" template="bullfrogchampion/checkout/checkout/enterprise/giftcard.phtml" />
+            </block>
 			<block type="checkout/onepage_shipping_method_available" name="shipping_methods" template="bullfrogchampion/checkout/checkout/shipping_method.phtml" />
 			<block type="checkout/cart_totals" name="order.summary" as="summary" template="bullfrogchampion/checkout/checkout/summary.phtml" />
 		</block>

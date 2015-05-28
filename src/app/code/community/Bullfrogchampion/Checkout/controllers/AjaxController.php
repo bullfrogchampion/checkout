@@ -420,4 +420,118 @@ class Bullfrogchampion_Checkout_AjaxController extends Mage_Core_Controller_Fron
     {
         return Mage::getSingleton('checkout/type_onepage');
     }
+
+    /**
+     * Add Gift Card
+     */
+    public function addGiftcardAction()
+    {
+        // do we even support gift cards?
+        if (Mage::getEdition() != Mage::EDITION_ENTERPRISE) {
+            $response['success'] = false;
+            $response['error'] = true;
+            $response['message'] = $this->__('Gift cards not supported by this version of Magento.');
+            $this->getResponse()
+                ->setHeader('Content-Type', 'application/json')
+                ->setBody(Zend_Json::encode($response));
+
+            return;
+        }
+
+        $code = $this->getRequest()->getPost('giftcard_code', false);
+        $response = array();
+
+        if ($code) {
+            try {
+                // check maximum length of code
+                if (strlen($code) > Enterprise_GiftCardAccount_Helper_Data::GIFT_CARD_CODE_MAX_LENGTH) {
+                    $response['success'] = false;
+                    $response['error'] = true;
+                    $response['message'] = $this->__('Invalid gift card');
+                    $this->getResponse()
+                        ->setHeader('Content-Type', 'application/json')
+                        ->setBody(Zend_Json::encode($response));
+
+                    return;
+                }
+
+                // Add to the customers cart
+                Mage::getModel('enterprise_giftcardaccount/giftcardaccount')
+                    ->loadByCode($code)
+                    ->addToCart();
+
+                // send back a success message
+                $response['success'] = true;
+                $response['error'] = false;
+                $response['message'] = $this->__('Gift Card "%s" was added.', Mage::helper('core')->escapeHtml($code));
+            } catch (Mage_Core_Exception $e) {
+                $response['success'] = false;
+                $response['error'] = true;
+                $response['message'] = $e->getMessage();
+            } catch (Exception $e) {
+                $response['success'] = false;
+                $response['error'] = true;
+                $response['message'] = $this->__('Cannot apply gift card.');
+            }
+        } else {
+            $response['success'] = false;
+            $response['error'] = true;
+            $response['message'] = $this->__('Cannot apply gift card.');
+        }
+
+        $this->getResponse()
+            ->setHeader('Content-Type', 'application/json')
+            ->setBody(Zend_Json::encode($response));
+    }
+
+    /**
+     * Remove gift card
+     */
+    public function removeGiftcardAction()
+    {
+        // do we even support gift cards?
+        if (Mage::getEdition() != Mage::EDITION_ENTERPRISE) {
+            $response['success'] = false;
+            $response['error'] = true;
+            $response['message'] = $this->__('Gift cards not supported by this version of Magento.');
+            $this->getResponse()
+                ->setHeader('Content-Type', 'application/json')
+                ->setBody(Zend_Json::encode($response));
+
+            return;
+        }
+
+        $code = $this->getRequest()->getParam('code', false);
+        $response = array();
+
+        if ($code) {
+            try {
+                // remove from cart
+                Mage::getModel('enterprise_giftcardaccount/giftcardaccount')
+                    ->loadByCode($code)
+                    ->removeFromCart();
+
+                // add a success message
+                $response['success'] = true;
+                $response['error'] = false;
+                $response['message'] = $this->__('Gift Card "%s" was removed.', Mage::helper('core')->escapeHtml($code));
+            } catch (Mage_Core_Exception $e) {
+                $response['success'] = false;
+                $response['error'] = true;
+                $response['message'] = $e->getMessage();
+            } catch (Exception $e) {
+                $response['success'] = false;
+                $response['error'] = true;
+                $response['message'] = $this->__('Cannot remove gift card.');
+            }
+        } else {
+            $response['success'] = false;
+            $response['error'] = true;
+            $response['message'] = $this->__('Cannot apply gift card.');
+        }
+
+        $this->getResponse()
+            ->setHeader('Content-Type', 'application/json')
+            ->setBody(Zend_Json::encode($response));
+    }
 }
