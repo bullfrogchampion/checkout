@@ -1,10 +1,10 @@
 Bullfrogchampion Checkout Extension
 =====================
-An Enterprise ready, easily customisable one page checkout solution.
+An Enterprise ready, easily customisable one page checkout solution for Magento.
 
 Facts
 -----
-- version: 0.0.1
+- version: 1.0.0
 - extension key: Bullfrogchampion_Checkout
 - [extension on GitHub](https://github.com/bullfrogchampion/checkout)
 
@@ -43,11 +43,15 @@ Road map
 --------
 * ~~HTTPS support~~
 * Enterprise Features
-    * Gift Cards
+    * ~~Gift Cards~~
     * Reward Points
     * Store Credit
 * Gift Options
-* https://github.com/webcomm/magento-boilerplate
+* Compatibility with https://github.com/webcomm/magento-boilerplate
+* Rebuild totals table to handle the getItemHtml of the core checkout
+* Refactor the JavaScript to give better structure and to remove all event handlers defined in the markup
+* Refactor the CSS into sensible SCSS
+* Replace all tabs with 4 spaces
 
 Contribution
 ------------
